@@ -24,11 +24,7 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
     }
 
     ProgressBar progressBar = null;
-    public String loadedJoke = null;
     public boolean testFlag = false;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +58,7 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
         if (!testFlag) {
             Context context = getActivity();
             Intent intent = new Intent(context, DisplayJokeActivity.class);
-            intent.putExtra(context.getString(R.string.jokeEnvelope), loadedJoke);
+            intent.putExtra(context.getString(R.string.jokeEnvelope), data);
             context.startActivity(intent);
             progressBar.setVisibility(View.GONE);
         }
