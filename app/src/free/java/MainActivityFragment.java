@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,9 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 import com.prudhvi.androidjokelib.DisplayJokeActivity;
-
+import com.udacity.gradle.builditbigger.DataRecieveInterface;
+import com.udacity.gradle.builditbigger.EndpointAsyncTask;
+import com.udacity.gradle.builditbigger.R;
 
 
 /**
@@ -65,7 +67,7 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
         });
         requestNewInterstitial();
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-        AdView mAdView = (AdView)root.findViewById(R.id.adView);
+        AdView mAdView = root.findViewById(R.id.adView);
         Button button =  root.findViewById(R.id.joke_btn);
         button.setOnClickListener(new View.OnClickListener(){
             @Override

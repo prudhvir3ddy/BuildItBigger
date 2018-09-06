@@ -1,4 +1,3 @@
-package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +11,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.prudhvi.androidjokelib.DisplayJokeActivity;
+import com.udacity.gradle.builditbigger.DataRecieveInterface;
+import com.udacity.gradle.builditbigger.EndpointAsyncTask;
+import com.udacity.gradle.builditbigger.R;
 
 /**
  * A placeholder fragment containing a simple view.
