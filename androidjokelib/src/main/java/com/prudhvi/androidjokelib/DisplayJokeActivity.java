@@ -1,9 +1,8 @@
 package com.prudhvi.androidjokelib;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class DisplayJokeActivity extends AppCompatActivity {
@@ -16,16 +15,13 @@ public class DisplayJokeActivity extends AppCompatActivity {
         TextView textview =  findViewById(R.id.joke_text);
 
         String JokeResult = null;
-
         Intent intent = getIntent();
         JokeResult = intent.getStringExtra(getString(R.string.jokeEnvelope));
 
         if (JokeResult != null) {
-
-            Log.d("jokeman",JokeResult);
             textview.setText(JokeResult);
         } else {
-            textview.setText("Dig deeped, we gotta find the joke!");
+            textview.setText("No Jokes for now man! come back later");
         }
     }
 }
