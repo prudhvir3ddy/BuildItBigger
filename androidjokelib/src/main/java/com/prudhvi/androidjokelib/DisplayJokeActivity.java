@@ -21,7 +21,7 @@ public class DisplayJokeActivity extends AppCompatActivity {
         if (JokeResult != null) {
             textview.setText(JokeResult);
         } else {
-            textview.setText("No Jokes for now man! come back later");
+            textview.setText(R.string.nojokes);
         }
     }
 }
