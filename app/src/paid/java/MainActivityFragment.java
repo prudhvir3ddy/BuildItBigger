@@ -1,9 +1,7 @@
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,7 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
     }
 
     ProgressBar progressBar = null;
-    public boolean testFlag = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,12 +53,10 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
 
     @Override
     public void onDataReceived(String data) {
-        if (!testFlag) {
             Context context = getActivity();
             Intent intent = new Intent(context, DisplayJokeActivity.class);
             intent.putExtra(context.getString(R.string.jokeEnvelope), data);
             context.startActivity(intent);
             progressBar.setVisibility(View.GONE);
-        }
     }
 }

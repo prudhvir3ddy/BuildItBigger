@@ -32,10 +32,8 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
     }
 
     ProgressBar progressBar = null;
-    public String loadedJoke = null;
     public boolean testFlag = false;
     PublisherInterstitialAd mPublisherInterstitialAd = null;
-    String LOG_TAG = "FREEDUBUG";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,13 +53,13 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 super.onAdFailedToLoad(errorCode);
-                Log.i(LOG_TAG, "onAdFailedToLoad: ad Failed to load. Reloading...");
+                Log.i("Ads", "onAdFailedToLoad: ad Failed to load. Reloading...");
                 requestNewInterstitial();
             }
 
             @Override
             public void onAdLoaded() {
-                Log.i(LOG_TAG, "onAdLoaded: interstitial is ready!");
+                Log.i("Ads", "onAdLoaded: interstitial is ready!");
                 super.onAdLoaded();
             }
         });
@@ -73,10 +71,10 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
             @Override
             public void onClick(View v) {
                 if (mPublisherInterstitialAd.isLoaded()) {
-                    Log.i(LOG_TAG, "onClick: interstitial was ready");
+                    Log.i("Ads", "onClick: interstitial was ready");
                     mPublisherInterstitialAd.show();
                 } else {
-                    Log.i(LOG_TAG, "onClick: interstitial was not ready.");
+                    Log.i("Ads", "onClick: interstitial was not ready.");
                     progressBar.setVisibility(View.VISIBLE);
                     getJoke();
                 }
@@ -99,8 +97,6 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
         endpointAsyncTask.execute();
     }
 
-
-
     private void requestNewInterstitial() {
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
@@ -112,7 +108,6 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
     @Override
     public void onDataReceived(String data) {
         if (!testFlag) {
-            Log.d("test",data);
             Context context = getActivity();
             Intent intent = new Intent(context, DisplayJokeActivity.class);
             intent.putExtra(context.getString(R.string.jokeEnvelope), data);
