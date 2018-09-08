@@ -20,6 +20,9 @@ public class EndpointAsyncTask extends AsyncTask<Void, Void, String> {
         this.dataRecieveInterface=dataRecieveInterface;
     }
 
+    public EndpointAsyncTask(MainActivity mainActivity) {
+    }
+
     @Override
     protected String doInBackground(Void... params) {
 

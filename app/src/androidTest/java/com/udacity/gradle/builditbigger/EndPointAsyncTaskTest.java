@@ -1,10 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.concurrent.TimeUnit;
+
+import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 /**
  * Created by root on 9/5/18.
@@ -14,11 +18,17 @@ import static org.junit.Assert.assertTrue;
 public class EndPointAsyncTaskTest {
 
     @Test
-    public void testDoInBackground() throws Exception {
-        com.udacity.gradle.builditbigger.MainActivityFragment fragment = new com.udacity.gradle.builditbigger.MainActivityFragment();
-        fragment.testFlag = true;
-        new EndpointAsyncTask().execute(fragment);
-        Thread.sleep(5000);
-        assertTrue("Error: Fetched Joke = " + fragment.loadedJoke, fragment.loadedJoke != null);
+    public void testDoInBackground() {
+        try {
+            MainActivity mainActivity = new MainActivity();
+            EndpointAsyncTask syncEndpoint = new EndpointAsyncTask(mainActivity);
+            syncEndpoint.execute();
+            String result = syncEndpoint.get(30, TimeUnit.SECONDS);
+
+            assertNotNull(result);
+            assertTrue(result.length() > 0);
+        } catch (Exception e) {
+            Log.e("Test:", " Timed out");
+        }
     }
 }

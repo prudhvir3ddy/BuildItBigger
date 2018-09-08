@@ -40,7 +40,7 @@ public class MainActivityFragment extends Fragment implements DataRecieveInterfa
                              Bundle savedInstanceState) {
         MobileAds.initialize(getContext(),"ca-app-pub-3688611183353098~2791914911");
         mPublisherInterstitialAd = new PublisherInterstitialAd(getContext());
-        mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3688611183353098/7506961643");
+        mPublisherInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mPublisherInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
